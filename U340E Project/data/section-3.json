@@ -1,0 +1,377 @@
+{
+  "id": 3,
+  "title": "Nguyên Lý Làm Việc",
+  "subsections": [
+    {
+      "id": "3.1",
+      "title": "Tổng quan nguyên lý làm việc",
+      "content": {
+        "intro": "Về bản chất, U340E tạo ra các cấp số bằng cách đóng/mở có điều khiển các ly hợp ma sát (C1, C2, C3), phanh (B1, B2, B3) và khớp một chiều (F1, F2) để thay đổi phần tử chủ động - bị hãm - đầu ra của cụm bánh răng hành tinh kiểu CR-CR.",
+        "explain": [
+          {
+            "title": "Cơ chế tạo cấp số",
+            "text": "Khi chuyển số, hệ thống thủy lực sẽ đưa **áp suất đường dầu (line pressure)** đến đúng phần tử chấp hành thông qua các van chuyển số; còn hệ điều khiển điện tử tác động chủ yếu lên **solenoid S1, S2** để đổi trạng thái các van chuyển số."
+          },
+          {
+            "title": "Bảng 3.1 — Trạng thái điều khiển (S1, S2) và phần tử chấp hành theo tay số",
+            "text": "Bảng dưới đây tóm tắt trạng thái solenoid S1, S2 và các phần tử chấp hành chính (ly hợp, phanh, khớp một chiều) ở mỗi tay số tương ứng với từng vị trí cần số.",
+            "customHtml": "<div class=\"custom-table-wrap\"><table class=\"content-table\"><thead>\n<tr><th>Dải số</th><th>Tay số</th><th>S1</th><th>S2</th><th>Phần tử chấp hành chính</th><th>Ghi chú vận hành</th></tr>\n</thead><tbody>\n<tr><td>D</td><td>1</td><td>ON</td><td>ON</td><td>C1 + B3 + F2</td><td style=\"text-align:left\">Khởi hành êm; F2 hỗ trợ chống quay ngược cho cụm bị hãm</td></tr>\n<tr><td>D</td><td>2</td><td>ON</td><td>OFF</td><td>C1 + B2 + F1</td><td style=\"text-align:left\">Chuyển tiếp, dùng B2/F1 để tạo phản lực cho hệ sau</td></tr>\n<tr><td>D</td><td>3</td><td>OFF</td><td>OFF</td><td>C1 + C2 (+B2 giữ)</td><td style=\"text-align:left\">Truyền gần trực tiếp, hiệu suất tốt</td></tr>\n<tr><td>D</td><td>4 (OD)</td><td>OFF</td><td>ON</td><td>C2 + B1 (+B2 giữ)</td><td style=\"text-align:left\">Overdrive, giảm tua máy khi chạy nhanh</td></tr>\n<tr><td>3</td><td>1-3</td><td>như dải D</td><td>như dải D</td><td>như dải D</td><td style=\"text-align:left\">Giới hạn không lên số 4</td></tr>\n<tr><td>2</td><td>1</td><td>ON</td><td>ON</td><td>C1 + B3 + F2</td><td style=\"text-align:left\">Tăng phanh động cơ khi cần</td></tr>\n<tr><td>2</td><td>2</td><td>ON</td><td>OFF</td><td>C1 + B1 + B2 + F1</td><td style=\"text-align:left\">Phanh động cơ mạnh hơn dải D ở số 2</td></tr>\n<tr><td>L</td><td>1</td><td>ON</td><td>ON</td><td>C1 + B3 + F2</td><td style=\"text-align:left\">Giữ số thấp, hỗ trợ leo/xuống dốc</td></tr>\n<tr><td>R</td><td>R</td><td>ON</td><td>ON</td><td>C3 + B3</td><td style=\"text-align:left\">Đảo chiều nhờ hãm cần dẫn sau và dẫn động mặt trời sau</td></tr>\n</tbody></table></div>"
+          },
+          {
+            "title": "Bảng 3.2a — Trạng thái hoạt động ở dải số tiến (D, 3, 2, L)",
+            "text": "Bảng dưới đây thể hiện trạng thái hoạt động của các van solenoid (S1, S2), ly hợp (C1, C2, C3), phanh (B1, B2, B3) và khớp một chiều (F1, F2) khi cần số ở các vị trí số tiến. Dấu **●** biểu thị phần tử đang hoạt động.",
+            "customHtml": "<div class=\"custom-table-wrap\"><table class=\"content-table\"><thead>\n<tr><th>Vị trí</th><th>Số</th><th>S1</th><th>S2</th><th>C1</th><th>C2</th><th>C3</th><th>B1</th><th>B2</th><th>B3</th><th>F1</th><th>F2</th></tr>\n</thead><tbody>\n<tr><td rowspan=\"4\">D</td><td>1</td><td>ON</td><td>ON</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td></tr>\n<tr><td>2</td><td>ON</td><td>OFF</td><td>●</td><td></td><td></td><td></td><td>●</td><td></td><td>●</td><td></td></tr>\n<tr><td>3</td><td>OFF</td><td>OFF</td><td>●</td><td>●</td><td></td><td></td><td>●</td><td></td><td></td><td></td></tr>\n<tr><td>4</td><td>OFF</td><td>ON</td><td></td><td>●</td><td></td><td>●</td><td>●</td><td></td><td></td><td></td></tr>\n<tr><td rowspan=\"3\">3</td><td>1</td><td>ON</td><td>ON</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td></tr>\n<tr><td>2</td><td>ON</td><td>OFF</td><td>●</td><td></td><td></td><td></td><td>●</td><td></td><td>●</td><td></td></tr>\n<tr><td>3</td><td>OFF</td><td>OFF</td><td>●</td><td>●</td><td></td><td></td><td>●</td><td></td><td></td><td></td></tr>\n<tr><td rowspan=\"2\">2</td><td>1</td><td>ON</td><td>ON</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td></tr>\n<tr><td>2</td><td>ON</td><td>OFF</td><td>●</td><td></td><td></td><td>●</td><td>●</td><td></td><td>●</td><td></td></tr>\n<tr><td>L</td><td>1</td><td>ON</td><td>ON</td><td>●</td><td></td><td></td><td></td><td></td><td>●</td><td></td><td>●</td></tr>\n</tbody></table></div>"
+          },
+          {
+            "title": "Bảng 3.2b — Trạng thái hoạt động ở các vị trí P, R, N",
+            "text": "Bảng dưới đây thể hiện trạng thái hoạt động khi cần số ở các vị trí Đỗ (P), Lùi (R) và Mo (N). Dấu **●** biểu thị phần tử đang hoạt động.",
+            "customHtml": "<div class=\"custom-table-wrap\"><table class=\"content-table\"><thead>\n<tr><th>Vị trí</th><th>Số</th><th>S1</th><th>S2</th><th>C1</th><th>C2</th><th>C3</th><th>B1</th><th>B2</th><th>B3</th><th>F1</th><th>F2</th></tr>\n</thead><tbody>\n<tr><td>P</td><td>Đỗ</td><td>ON</td><td>ON</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>\n<tr><td>R</td><td>Lùi</td><td>ON</td><td>ON</td><td></td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td></td></tr>\n<tr><td>N</td><td>Mo</td><td>ON</td><td>ON</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>\n</tbody></table></div>"
+          }
+        ],
+        "relatedDTC": []
+      }
+    },
+    {
+      "id": "3.2",
+      "title": "Tay số 1",
+      "content": {
+        "intro": "Tay số 1 (D/3/2) và tay số 1 (L) — khuếch đại mômen lớn nhất.",
+        "explain": [
+          {
+            "title": "Cơ cấu hoạt động",
+            "text": "Ở tay số 1, ly hợp C1 nối trục trung gian với bánh răng mặt trời trước, trong khi B3 giữ cụm bánh răng bao trước - cần dẫn sau đứng yên; đồng thời F2 đóng vai trò chặn chiều để chống quay ngược theo hướng không mong muốn.\n\nKhi động cơ truyền mômen qua biến mô đến trục sơ cấp, mômen đi qua C1 làm mặt trời trước quay, kéo các bánh hành tinh trước lăn trên vòng răng bị hãm và sinh ra chuyển động tại cần dẫn trước (đầu ra), nhờ đó xe khởi hành nhẹ, lực kéo lớn."
+          },
+          {
+            "title": "Điều khiển thủy lực",
+            "text": "Về thủy lực, ở số 1 (dải D), S1 ON và S2 ON, áp suất từ bơm sau van điều áp chính đi qua manual valve, vào mạch C1, đồng thời được phân nhánh qua bộ tích áp (accumulator) để giảm giật khi ép ly hợp."
+          },
+          {
+            "title": "Phanh động cơ ở dải D/3/2",
+            "text": "Đặc tính quan trọng của số 1 là phanh động cơ khác nhau theo dải.\n\nỞ vị trí D, cơ cấu có xu hướng phanh êm hơn do mức phụ thuộc vào khớp một chiều lớn.",
+            "image": "assets/images/s3/s3-1.png",
+            "caption": "Hình 3.1 — Sơ đồ nguyên lý tay số 1 (dải D/3/2)"
+          },
+          {
+            "title": "Phanh động cơ ở dải L",
+            "text": "Còn ở L, B3 tham gia rõ hơn nên khả năng ghì xe khi xuống dốc tốt hơn (phanh cứng hơn), tránh trôi xe.",
+            "image": "assets/images/s3/s3-2.png",
+            "caption": "Hình 3.2 — Sơ đồ nguyên lý tay số 1 (dải L)"
+          }
+        ],
+        "relatedDTC": ["P0973", "P0974"]
+      }
+    },
+    {
+      "id": "3.3",
+      "title": "Tay số 2",
+      "content": {
+        "intro": "Tay số 2 (dải D/3) và tay số 2 (dải 2) — chuyển tiếp, cân bằng lực kéo và tốc độ.",
+        "explain": [
+          {
+            "title": "Cơ cấu hoạt động",
+            "text": "Khi lên số 2 (trong dải D hoặc 3), hộp số vẫn giữ C1 để tiếp tục dẫn động mặt trời trước, nhưng chuyển phần tử tạo phản lực sang hệ sau bằng cách đóng phanh B2 và cho F1 làm việc.\n\nLúc này dòng công suất có thể hình dung chia hai nhánh:\n\n• **Nhánh qua bộ hành tinh trước**: tương tự số 1\n• **Nhánh còn lại**: truyền từ bộ trước sang bộ sau theo đường vòng răng - cần dẫn - hành tinh sau để cuối cùng tổng hợp ra đầu ra tại cần dẫn trước.\n\nCách tổ chức này làm tỉ số truyền giảm xuống, xe tăng tốc dài hơi hơn mà không mất lực kéo đột ngột."
+          },
+          {
+            "title": "Điều khiển thủy lực",
+            "text": "Về điều khiển thủy lực, trạng thái S1 ON, S2 OFF sẽ làm van chuyển 1-2 đổi vị trí để đưa áp suất đến B2, trong khi vẫn duy trì áp suất cho C1."
+          },
+          {
+            "title": "Tay số 2 ở dải D/3",
+            "text": "Đây cũng là tay số mà khác biệt dải D và dải 2 thể hiện rất rõ ở cảm giác ghì xe.\n\nỞ D-số 2, phản lực chủ yếu dựa vào B2 và F1 để chống quay ngược cho phần tử bị hãm.",
+            "image": "assets/images/s3/s3-3.png",
+            "caption": "Hình 3.3 — Sơ đồ nguyên lý tay số 2 (dải D/3)"
+          },
+          {
+            "title": "Tay số 2 ở dải 2",
+            "text": "Còn ở 2-số 2, hộp số siết thêm phần tử để tạo phanh động cơ mạnh hơn, phù hợp đường dốc hoặc khi cần hạn chế tăng tốc.",
+            "image": "assets/images/s3/s3-4.png",
+            "caption": "Hình 3.4 — Sơ đồ nguyên lý tay số 2 (dải 2)"
+          }
+        ],
+        "relatedDTC": ["P0976", "P0977"]
+      }
+    },
+    {
+      "id": "3.4",
+      "title": "Tay số 3",
+      "content": {
+        "intro": "Tay số 3 (dải D/3) — truyền gần trực tiếp (hiệu suất tốt).",
+        "explain": [
+          {
+            "title": "Cơ cấu hoạt động",
+            "text": "Sang số 3, hộp số đóng đồng thời C1 và C2, khiến cần dẫn sau và mặt trời trước quay cùng chiều, cùng tốc độ, nhờ đó đầu ra quay gần như ăn theo đầu vào và tổn thất giảm.\n\nỞ tay số này, B2 vẫn có thể được duy trì trong hệ thống nhưng không còn là phần tử chịu tải chính như số 2."
+          },
+          {
+            "title": "Điều khiển thủy lực",
+            "text": "Về thủy lực, trạng thái S1 OFF, S2 OFF làm các van chuyển số đưa áp suất đến C2 (qua van chuyển 2-3), đồng thời duy trì C1 và có thể duy trì B2 theo cấu trúc mạch dầu.",
+            "image": "assets/images/s3/s3-5.png",
+            "caption": "Hình 3.5 — Sơ đồ nguyên lý tay số 3"
+          }
+        ],
+        "relatedDTC": ["P0976", "P0977", "P0787"]
+      }
+    },
+    {
+      "id": "3.5",
+      "title": "Tay số 4 (OD)",
+      "content": {
+        "intro": "Tay số 4 (OD - dải D) — số truyền tăng, giảm tua máy.",
+        "explain": [
+          {
+            "title": "Cơ cấu hoạt động",
+            "text": "Ở số 4, mục tiêu là giảm vòng tua động cơ khi xe chạy nhanh bằng cách tạo tỉ số truyền nhỏ hơn 1 (overdrive).\n\nKhi đó C2 dẫn động cần dẫn sau, đồng thời B1 hãm mặt trời sau, khiến bộ hành tinh sau làm việc theo chế độ truyền tăng.\n\nTrong nhiều tài liệu mô tả, B2 vẫn ở trạng thái làm việc nhưng chủ yếu mang tính ổn định/duy trì điều kiện động học, không phải phần tử chịu tải chính."
+          },
+          {
+            "title": "Điều khiển thủy lực",
+            "text": "Mạch dầu tương ứng: S1 OFF, S2 ON sẽ khiến van chuyển 3-4 cắt đường dầu cấp cho C1 (xả về cacte) và đồng thời đưa dầu tới B1, trong khi vẫn duy trì C2 qua van chuyển 2-3; áp suất cho B2 vẫn được duy trì theo nhánh riêng.",
+            "image": "assets/images/s3/s3-6.png",
+            "caption": "Hình 3.6 — Sơ đồ nguyên lý tay số 4"
+          }
+        ],
+        "relatedDTC": ["P0787", "P0788", "P0976"]
+      }
+    },
+    {
+      "id": "3.6",
+      "title": "Tay số lùi (R)",
+      "content": {
+        "intro": "Tay số lùi (R) — đảo chiều quay đầu ra.",
+        "explain": [
+          {
+            "title": "Cơ cấu hoạt động",
+            "text": "Ở số lùi, hộp số đóng C3 để dẫn động mặt trời sau, đồng thời B3 hãm cần dẫn sau, nhờ đó tạo chuyển động đảo chiều tại phần tử đầu ra và truyền qua bộ truyền cuối ra bánh xe.\n\nDo tỉ số truyền lùi thường khá lớn (về độ lớn), xe lùi ổn định và có lực ngay cả khi tải cao, đồng thời giúp người lái kiểm soát dễ ở tốc độ thấp."
+          },
+          {
+            "title": "Điều khiển thủy lực",
+            "text": "Về thủy lực, S1 ON, S2 ON, manual valve ở vị trí R sẽ cấp áp suất cho C3 và qua nhánh điều khiển số lùi để cấp cho B3.",
+            "image": "assets/images/s3/s3-7.png",
+            "caption": "Hình 3.7 — Sơ đồ nguyên lý tay số lùi R"
+          }
+        ],
+        "relatedDTC": ["P0705"]
+      }
+    },
+    {
+      "id": "3.7",
+      "title": "Tính toán tỉ số truyền",
+      "content": {
+        "intro": "U340E dùng cụm bánh răng hành tinh CR-CR, gồm 01 bộ hành tinh trước, 01 bộ hành tinh sau và cặp bánh răng trung gian.",
+        "explain": [
+          {
+            "title": "Các thông số số răng (theo tài liệu tính toán)",
+            "text": "• Bộ hành tinh trước: S1 = 46, R1 = 85, (bánh hành tinh = 21)\n• Bộ hành tinh sau: S2 = 32, R2 = 75, (bánh hành tinh = 21)\n• Bánh răng trung gian: Z chủ động = 52, Z bị động = 53"
+          }
+        ],
+        "formula": {
+          "title": "Tính toán tỉ số truyền các tay số",
+          "items": [
+            {
+              "label": "Số 1",
+              "description": "Ly hợp C1 hoạt động, ly hợp một chiều F2 hoạt động. Dòng truyền công suất: Bánh bơm → Bánh tuabin → Trục sơ cấp → Ly hợp C1 hoạt động làm bánh răng mặt trời trước quay → Bánh răng hành tinh trước → Cần dẫn trước → Bánh răng chủ động → Bánh răng bị động.",
+              "states": [
+                "Ly hợp C1: làm việc",
+                "Phanh B3: làm việc",
+                "Khớp một chiều F2: làm việc"
+              ],
+              "kinematics": [
+                "Chủ động: bánh răng mặt trời trước → TS = Tin",
+                "Bị hãm: bánh răng bao trước → TR = 0",
+                "Đầu ra: cần dẫn hành tinh trước → TP = Tout"
+              ],
+              "equations": [
+                {
+                  "caption": "Công thức:",
+                  "latex": "R + S \\cdot T_P = R \\cdot T_R + S \\cdot T_S"
+                },
+                {
+                  "caption": "Thế số:",
+                  "latex": "85 + 46 \\cdot T_{out} = 85 \\times 0 + 46 \\cdot T_{in}"
+                },
+                {
+                  "caption": "",
+                  "latex": "131 \\cdot T_{out} = 46 \\cdot T_{in}"
+                }
+              ],
+              "result": {
+                "label": "Tính tỉ số truyền tay số 1:",
+                "latex": "i_1 = \\frac{T_{in}}{T_{out}} \\times i_{trung\\;gian} = \\frac{131}{46} \\times \\frac{53}{52} = 2{,}903"
+              }
+            },
+            {
+              "label": "Số 2",
+              "description": "Ly hợp C1 hoạt động, phanh B2 hoạt động, ly hợp một chiều F1 hoạt động. Dòng truyền công suất: Bánh bơm → Bánh tuabin → Trục sơ cấp → Ly hợp C1 hoạt động làm bánh răng mặt trời trước quay → Bánh răng hành tinh trước. Lúc này dòng công suất chia làm 2 nhánh:\n\nNhánh bộ hành tinh trước: như ở tay số 1.\n\nNhánh bộ hành tinh sau: Bánh răng hành tinh trước → Bánh răng bao trước → Cần dẫn sau → Bánh răng hành tinh sau → Bánh răng bao sau → Cần dẫn trước.\n\nKết hợp cả 2 nhánh truyền đến Bánh răng chủ động → Bánh răng bị động.",
+              "states": [
+                "Ly hợp C1: làm việc",
+                "Phanh B2: làm việc",
+                "Khớp một chiều F1: làm việc"
+              ],
+              "kinematics": [
+                "Chủ động: bánh răng mặt trời trước → TS1 = Tin",
+                "Bị hãm: bánh răng mặt trời sau → TS2 = 0",
+                "Đầu ra: cần dẫn trước → TP1 = Tout"
+              ],
+              "equations": [
+                {
+                  "caption": "Do hộp số U340E sử dụng cụm bánh răng hành tinh kiểu CR–CR nên:",
+                  "latex": "T_{P1} = T_{R2} \\quad ; \\quad T_{P2} = T_{R1}"
+                },
+                {
+                  "caption": "Xét bộ hành tinh trước:",
+                  "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{R1} + S_1 \\cdot T_{S1} \\quad (1)"
+                },
+                {
+                  "caption": "Xét bộ hành tinh sau:",
+                  "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{R2} + S_2 \\cdot T_{S2}"
+                },
+                {
+                  "caption": "",
+                  "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{R2} + S_2 \\times 0"
+                },
+                {
+                  "caption": "",
+                  "latex": "T_{P2} = \\frac{R_2}{R_2 + S_2} \\cdot T_{R2} \\quad (2)"
+                },
+                {
+                  "caption": "Thế (2) ; T[sub:P1] = T[sub:R2] ; T[sub:P2] = T[sub:R1] vào (1):",
+                  "latex": "R_1 + S_1 \\cdot T_{P1} = \\frac{R_1 R_2}{R_2 + S_2} \\cdot T_{P1} + S_1 \\cdot T_{S1}"
+                },
+                {
+                  "caption": "",
+                  "latex": "\\left(R_1 + S_1 - \\frac{R_1 R_2}{R_2 + S_2} \\cdot S_1\\right) \\cdot T_{P1} = T_{S1}"
+                }
+              ],
+              "result": {
+                "label": "Tính tỉ số truyền tay số 2:",
+                "latex": "i_2 = \\frac{T_{in}}{T_{out}} \\times i_{trung\\;gian} = \\frac{T_{S1}}{T_{P1}} \\times i_{trung\\;gian} = \\frac{R_1 + S_1 - \\frac{R_1 R_2}{R_2 + S_2}}{S_1} \\times i_{trung\\;gian} = \\frac{85 + 46 - \\frac{85 \\times 75}{75 + 32}}{46} \\times \\frac{53}{52} = 1{,}582"
+              }
+            },
+            {
+              "label": "Số 3",
+              "description": "Ly hợp C1, C2 hoạt động, phanh B2 hoạt động. Dòng truyền công suất: Bánh bơm → Bánh tuabin → Trục sơ cấp → Ly hợp C1, C2 hoạt động làm cho cần dẫn sau và bánh răng mặt trời trước quay cùng chiều cùng tốc độ → Cần dẫn trước quay → Bánh răng chủ động → Bánh răng bị động.",
+              "states": [
+                "Ly hợp C1: làm việc",
+                "Phanh B2: làm việc",
+                "Ly hợp C2: làm việc"
+              ],
+              "kinematics": [
+                "Chủ động: bánh răng mặt trời trước; cần dẫn sau → TS1 = TP2 = Tin",
+                "Bị hãm: bánh răng mặt trời sau → TS2 = 0",
+                "Đầu ra: cần dẫn sau → TP1 = Tout"
+              ],
+              "equations": [
+                {
+                  "caption": "Do hộp số U340E sử dụng cụm bánh răng hành tinh kiểu CR–CR nên:",
+                  "latex": "T_{P1} = T_{R2} \\quad ; \\quad T_{P2} = T_{R1}"
+                },
+                {
+                  "caption": "Xét bộ hành tinh trước:",
+                  "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{R1} + S_1 \\cdot T_{S1}"
+                },
+                {
+                  "caption": "Có T[sub:R1] = T[sub:P2]:",
+                  "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{P2} + S_1 \\cdot T_{S1}"
+                },
+                {
+                  "caption": "Có T[sub:P2] = T[sub:S1] = T[sub:in] (Do ly hợp C1, C2 làm việc):",
+                  "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{S1} + S_1 \\cdot T_{S1}"
+                },
+                {
+                  "caption": "",
+                  "latex": "R_1 + S_1 \\cdot T_{P1} = (R_1 + S_1) \\cdot T_{S1}"
+                }
+              ],
+              "result": {
+                "label": "Tính tỉ số truyền tay số 3:",
+                "latex": "i_3 = \\frac{T_{in}}{T_{out}} \\times i_{trung\\;gian} = \\frac{T_{S1}}{T_{P1}} \\times i_{trung\\;gian} = \\frac{R_1 + S_1}{R_1 + S_1} \\times \\frac{53}{52} = 1{,}019"
+              }
+            },
+            {
+              "label": "Số 4",
+              "description": "Ly hợp C2, phanh B1, B2 hoạt động. Dòng truyền công suất: Bánh bơm → Bánh tuabin → Trục sơ cấp → Ly hợp C2 hoạt động làm cho cần dẫn sau quay → Bánh răng mặt trời sau → Bánh răng bao sau → Cần dẫn trước quay → Bánh răng chủ động → Bánh răng bị động.",
+              "states": [
+                "Ly hợp C2: làm việc",
+                "Phanh B1: làm việc",
+                "Phanh B2: làm việc"
+              ],
+              "kinematics": [
+                "Chủ động: bánh răng mặt trời trước; cần dẫn sau → TP2 = Tin",
+                "Bị hãm: bánh răng mặt trời sau → TS2 = 0",
+                "Đầu ra: cần dẫn sau → TP1 = Tout"
+              ],
+              "equations": [
+                {
+                  "caption": "Do hộp số U340E sử dụng cụm bánh răng hành tinh kiểu CR–CR nên:",
+                  "latex": "T_{P1} = T_{R2} \\quad ; \\quad T_{P2} = T_{R1}"
+                },
+                {
+                  "caption": "Xét bộ hành tinh sau:",
+                  "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{R2} + S_2 \\cdot T_{S2}"
+                },
+                {
+                  "caption": "",
+                  "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{P1} + S_2 \\times 0"
+                },
+                {
+                  "caption": "",
+                  "latex": "T_{P2} = \\frac{R_2 \\cdot T_{P1}}{R_2 + S_2}"
+                }
+              ],
+              "result": {
+                "label": "Tính tỉ số truyền tay số 4:",
+                "latex": "i_4 = \\frac{T_{in}}{T_{out}} \\times i_{trung\\;gian} = \\frac{T_{P2}}{T_{P1}} \\times i_{trung\\;gian} = \\frac{R_2}{R_2 + S_2} \\times i_{trung\\;gian} = \\frac{75}{75 + 32} \\times \\frac{53}{52} = 0{,}714"
+              }
+            },
+            {
+              "label": "Số lùi R",
+              "description": "Ly hợp C3, phanh B3 hoạt động. Dòng truyền công suất: Bánh bơm → Bánh tuabin → Trục sơ cấp → Ly hợp C3 hoạt động làm bánh răng mặt trời sau quay → Bánh răng mặt trời sau → Bánh răng bao sau → Cần dẫn trước quay → Bánh răng chủ động → Bánh răng bị động.",
+              "states": ["Ly hợp C3: làm việc", "Phanh B3: làm việc"],
+              "kinematics": [
+                "Chủ động: bánh răng mặt trời sau → TS2 = Tin",
+                "Bị hãm: cần dẫn sau → TP2 = 0",
+                "Đầu ra: cần dẫn sau → TP1 = Tout"
+              ],
+              "equations": [
+                {
+                  "caption": "Do hộp số U340E sử dụng cụm bánh răng hành tinh kiểu CR–CR nên:",
+                  "latex": "T_{P1} = T_{R2} \\quad ; \\quad T_{P2} = T_{R1}"
+                },
+                {
+                  "caption": "Xét bộ hành tinh sau:",
+                  "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{R2} + S_2 \\cdot T_{S2}"
+                },
+                {
+                  "caption": "",
+                  "latex": "R_2 + S_2 \\times 0 = R_2 \\cdot T_{P1} + S_2 \\cdot T_{S2}"
+                },
+                {
+                  "caption": "",
+                  "latex": "-R_2 \\cdot T_{P1} = S_2 \\cdot T_{S2}"
+                },
+                {
+                  "caption": "",
+                  "latex": "-\\frac{R_2 \\cdot T_{P1}}{S_2} = T_{S2}"
+                }
+              ],
+              "result": {
+                "label": "Tính tỉ số truyền tay số lùi:",
+                "latex": "i_R = \\frac{T_{in}}{T_{out}} \\times i_{trung\\;gian} = \\frac{T_{S2}}{T_{P1}} \\times i_{trung\\;gian} = -\\frac{R_2}{S_2} \\times i_{trung\\;gian} = -\\frac{75}{32} \\times \\frac{53}{52} = -2{,}389"
+              }
+            }
+          ]
+        },
+        "table": {
+          "title": "Bảng 2.8 — Kết quả tỉ số truyền tính toán",
+          "headers": ["Tay số", "Tỉ số truyền"],
+          "rows": [
+            ["1 (Dãy D, 3, 2, L)", "i₁ = 2,903"],
+            ["2 (Dãy D, 3, 2)", "i₂ = 1,582"],
+            ["3 (Dãy D, 3)", "i₃ = 1,019"],
+            ["4 (Dãy D)", "i₄ = 0,714"],
+            ["R (Vị trí R)", "iᵣ = −2,389"]
+          ]
+        },
+        "relatedDTC": []
+      }
+    }
+  ]
+}

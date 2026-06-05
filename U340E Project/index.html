@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>U340E — Thư Viện Kỹ Thuật</title>
+    <meta
+      name="description"
+      content="Hệ thống tra cứu kỹ thuật hộp số tự động U340E"
+    />
+    <link rel="icon" type="image/png" href="assets/images/logo-bk.png" />
+    <!-- Google Fonts: Be Vietnam Pro (chuyên tối ưu tiếng Việt) + JetBrains Mono (code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets (order matters) -->
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+
+    <!-- KaTeX — math formula rendering (offline, local) -->
+    <link rel="stylesheet" href="vendor/katex/katex.min.css" />
+  </head>
+  <body>
+    <!-- ============================================================
+    GLOBAL HEADER — always visible
+  ============================================================ -->
+    <header class="site-header" id="site-header">
+      <div class="header-inner">
+        <!-- Logo / Brand -->
+        <a
+          href="#/"
+          class="header-brand school-header-brand"
+          aria-label="Về trang chủ"
+        >
+          <div class="header-school-wrap">
+            <div class="header-school-logos">
+              <img
+                src="assets/images/logo-bk.png"
+                alt="Logo Đại học Bách Khoa"
+                class="header-school-logo"
+              />
+              <img
+                src="assets/images/logo-khoa.png"
+                alt="Logo Khoa Kỹ thuật Giao thông"
+                class="header-school-logo"
+              />
+            </div>
+
+            <div class="header-school-text">
+              <div class="header-school-line header-school-line-1">
+                TRƯỜNG ĐẠI HỌC BÁCH KHOA - ĐHQG TP. HỒ CHÍ MINH
+              </div>
+              <div class="header-school-line header-school-line-2">
+                KHOA KỸ THUẬT GIAO THÔNG
+              </div>
+              <div class="header-school-line header-school-line-3">
+                BỘ MÔN KỸ THUẬT Ô TÔ - MÁY ĐỘNG LỰC
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Section breadcrumb (injected by router) -->
+        <nav
+          class="header-breadcrumb"
+          id="header-breadcrumb"
+          aria-label="Vị trí hiện tại"
+        >
+          <!-- Static fallback — always present even if JS fails. Renderer overwrites. -->
+          <a href="#/" class="breadcrumb-item">Trang Chủ</a>
+        </nav>
+
+        <!-- Right actions -->
+        <div class="header-actions">
+          <button
+            class="btn-icon"
+            id="btn-sidebar-toggle"
+            aria-label="Menu"
+            title="Mở/đóng menu"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+          <button
+            class="btn-icon"
+            id="btn-search"
+            aria-label="Tìm kiếm"
+            title="Tìm kiếm (Ctrl+K)"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
+          <span class="brand-badge header-badge-right">U340E</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================================
+    APP SHELL — sidebar + content
+  ============================================================ -->
+    <div class="app-shell" id="app-shell">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar" aria-label="Điều hướng chính">
+        <div class="sidebar-inner">
+          <!-- Sidebar header -->
+          <div class="sidebar-header">
+            <span class="sidebar-title">Nội Dung</span>
+            <button
+              class="btn-icon sidebar-close"
+              id="btn-sidebar-close"
+              aria-label="Đóng menu"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Navigation tree — rendered by renderer.js -->
+          <nav class="sidebar-nav" id="sidebar-nav" aria-label="Danh mục bài học">
+            <!-- Injected dynamically -->
+          </nav>
+        </div>
+      </aside>
+
+      <!-- SIDEBAR OVERLAY (mobile) -->
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+      <!-- MAIN CONTENT AREA -->
+      <main class="content-area" id="content-area" role="main">
+        <!-- All page content rendered here by modules -->
+        <div class="content-loading" id="content-loading" hidden>
+          <div class="spinner"></div>
+          <span>Đang tải...</span>
+        </div>
+        <div id="page-root"></div>
+
+        <!-- ============================================================
+          SITE FOOTNOTE — hiển thị ở mọi trang con (ẩn ở home)
+          Đồng bộ với home-uni-card: nền navy + 2 cột + border-left amber
+        ============================================================ -->
+        <footer class="site-footnote" id="site-footnote">
+          <div class="site-footnote-col">
+            <h4 class="site-footnote-label">TRƯỜNG ĐẠI HỌC</h4>
+            <div class="site-footnote-name">Đại học Bách Khoa TP.HCM</div>
+            <p class="site-footnote-desc">
+              Khoa Kỹ thuật Giao thông<br>
+              Bộ môn Kỹ thuật Ô tô · Máy động lực
+            </p>
+          </div>
+          <div class="site-footnote-col">
+            <h4 class="site-footnote-label">SINH VIÊN THỰC HIỆN</h4>
+            <div class="site-footnote-name">Trần Toàn Thuận · MSSV 2213366</div>
+            <p class="site-footnote-desc">
+              GVHD: Nguyễn Đình Hùng<br>
+              Năm học 2025 – 2026
+            </p>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <!-- ============================================================
+    SEARCH MODAL (structure only — wired in app.js)
+  ============================================================ -->
+    <div
+      class="modal-overlay"
+      id="search-modal"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Tìm kiếm"
+    >
+      <div class="modal-box search-box">
+        <div class="search-input-wrap">
+          <svg
+            class="search-icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="Tìm kiếm nội dung, mã lỗi..."
+            autocomplete="off"
+          />
+          <kbd class="search-kbd">ESC</kbd>
+        </div>
+        <div class="search-results" id="search-results">
+          <p class="search-hint">Nhập từ khóa để tìm kiếm...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+    SCRIPTS — module order matters
+  ============================================================ -->
+    <!-- KaTeX — load first so it's available when app.js imports -->
+    <script defer src="vendor/katex/katex.min.js"></script>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

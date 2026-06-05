@@ -1,0 +1,23 @@
+{
+  "id": 5,
+  "title": "Chẩn Đoán & Bảo Dưỡng",
+  "description": "Hệ thống mã lỗi DTC và 25 triệu chứng thường gặp trên hộp số U340E",
+  "subsections": [
+    {
+      "id": "5.1",
+      "title": "Danh mục mã lỗi DTC",
+      "isDtcList": true,
+      "content": {
+        "intro": "Mục này trình bày 18 mã lỗi chẩn đoán (DTC - Diagnostic Trouble Codes) phổ biến trên hộp số tự động U340E. Mỗi mã đi kèm sơ đồ mạch điện, mô tả chi tiết, điều kiện phát hiện và quy trình chẩn đoán tương tác từng bước."
+      }
+    },
+    {
+      "id": "5.2",
+      "title": "Danh mục triệu chứng",
+      "isSymptomList": true,
+      "content": {
+        "intro": "Mục này trình bày 25 triệu chứng thường gặp trên hộp số tự động U340E (xe không di chuyển, không chuyển số, giật mạnh, trượt, mất phanh động cơ, hiệu suất kém). Mỗi triệu chứng đi kèm flowchart chẩn đoán tương tác YES/NO theo từng bộ phận nghi ngờ."
+      }
+    }
+  ]
+}

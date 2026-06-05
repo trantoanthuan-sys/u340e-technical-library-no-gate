@@ -1,0 +1,329 @@
+{
+  "id": 4,
+  "title": "Điều Khiển & Thủy Lực",
+  "subsections": [
+    {
+      "id": "4.1",
+      "title": "Hệ thống điều khiển thủy lực",
+      "content": {
+        "intro": "Về cấu trúc, hệ thống thủy lực của U340E được tổ chức theo chuỗi chức năng: nguồn tạo áp (bơm dầu) → điều áp (van điều áp sơ cấp/thứ cấp, van bướm ga/van tuyến tính điều khiển áp suất) → phân phối (manual valve và cụm van chuyển số trong valve body) → làm việc (đường dầu đến các ly hợp/phanh và bộ tích áp để giảm chấn).\n\nTrong sơ đồ thành phần, hệ thống thường bao gồm lưới lọc dầu, bơm dầu, van điều áp sơ cấp, van chọn tay số, van điều áp thứ cấp, bộ tích năng, các van chuyển số 1-2/2-3/3-4, các van khóa biến mô và các đường dầu.",
+        "explain": [
+          {
+            "title": "Cấu trúc tổng quan",
+            "text": "Hệ thống thủy lực của U340E được tổ chức theo chuỗi chức năng: nguồn tạo áp (bơm dầu) → điều áp (van điều áp sơ cấp/thứ cấp, van bướm ga/van tuyến tính điều khiển áp suất) → phân phối (manual valve và cụm van chuyển số trong valve body) → làm việc (đường dầu đến các ly hợp/phanh và bộ tích áp để giảm chấn).\n\nTrong sơ đồ thành phần, hệ thống thường bao gồm lưới lọc dầu, bơm dầu, van điều áp sơ cấp, van chọn tay số, van điều áp thứ cấp, bộ tích năng, các van chuyển số 1-2/2-3/3-4, các van khóa biến mô và các đường dầu."
+          },
+          {
+            "title": "Nguồn tạo áp — bơm dầu và đường dầu chính",
+            "text": "Khi động cơ hoạt động, biến mô quay kéo theo bơm dầu. Dầu ATF được hút từ cácte (oil pan) qua lọc, đi vào bơm nhờ chênh lệch thể tích ở cửa hút; sau đó dầu bị kẹp giữa các phần tử bơm và vỏ bơm, được nén và đẩy ra cửa xả tạo thành **áp suất đường chính (line pressure)**.\n\nDòng dầu áp suất cao tiếp tục được đưa đến thân van (valve body) để phân phối cho các mạch: mạch điều khiển ly hợp-phanh, mạch bôi trơn và mạch làm mát.\n\nTrong mô tả kết cấu, U340E sử dụng **bơm dầu kiểu bánh răng ăn khớp trong** (internal gear pump), đặt tại vách ngăn giữa biến mô và cụm truyền bánh răng hành tinh, được dẫn động bởi trục/bánh bơm phía biến mô."
+          },
+          {
+            "title": "Nhóm Solenoid Chuyển Số (Shift Solenoids) — Loại On/Off",
+            "text": "Solenoid On/Off điều khiển các van chuyển số bằng cách đóng/mở dứt khoát."
+          },
+          {
+            "title": "Solenoid Valve S1",
+            "text": "**Chức năng:** Điều khiển van chuyển số 2-3 Shift Valve.\n\n**Nhiệm vụ:** Tham gia vào quá trình đóng/ngắt các đường dầu để chuyển đổi giữa các tay số. Kết hợp với S2 để tạo ra logic sang số.",
+            "image": "assets/images/s2/s2-1.png",
+            "caption": "Hình 4.1 — Solenoid Valve S1"
+          },
+          {
+            "title": "Solenoid Valve S2",
+            "text": "**Chức năng:** Điều khiển van chuyển số 1-2 Shift Valve và 3-4 Shift Valve.\n\n**Nhiệm vụ:** Phối hợp với S1. Đặc biệt quan trọng khi chuyển từ số 1 sang 2 và từ 3 sang 4 (Overdrive).",
+            "image": "assets/images/s2/s2-2.png",
+            "caption": "Hình 4.2 — Solenoid Valve S2"
+          },
+          {
+            "title": "Nhóm Solenoid Điều Áp (Pressure Control) — Loại Tuyến Tính",
+            "text": "Solenoid tuyến tính điều khiển áp suất bằng cách thay đổi dòng điện điều khiển từ ECU."
+          },
+          {
+            "title": "Solenoid Valve SLT (Line Pressure Control)",
+            "text": "**Chức năng:** Điều khiển áp suất đường dầu chính (Line Pressure), áp suất thứ cấp (Secondary Pressure) và áp suất hồi vị tích năng (Accumulator back pressure).\n\n**Nhiệm vụ:** ECU tính toán tải động cơ, vị trí bướm ga để điều khiển SLT. SLT sẽ điều tiết áp suất cấp cho các bộ ly hợp sao cho phù hợp nhất (Clutch Pressure Optimal Control), giúp giảm sốc khi vào số và tiết kiệm công suất bơm.",
+            "image": "assets/images/s2/s2-3.png",
+            "caption": "Hình 4.3 — Solenoid Valve SLT"
+          },
+          {
+            "title": "Solenoid Valve ST (Shift Timing)",
+            "text": "**Chức năng:** Chuyên dùng cho chế độ \"Clutch to Clutch Pressure Control\" (Điều khiển áp suất chuyển tiếp ly hợp).\n\n**Nhiệm vụ:** Kích hoạt van 3-4 Shift Valve và 4-3 Shift Valve. Trong quá trình chuyển từ số 3 lên 4 (hoặc ngược lại), Solenoid ST điều phối việc xả áp suất ly hợp C1 và đóng áp suất phanh B1 nhịp nhàng để tránh hiện tượng tua máy vọt lên (Flare) hoặc khựng lại (Tie-up).",
+            "image": "assets/images/s2/s2-4.png",
+            "caption": "Hình 4.4 — Solenoid Valve ST"
+          },
+          {
+            "title": "Solenoid Valve SL (Lock-up Control)",
+            "text": "**Chức năng:** Điều khiển áp suất đóng ly hợp khóa biến mô (Lock-up Clutch).",
+            "image": "assets/images/s2/s2-5.png",
+            "caption": "Hình 4.5 — Solenoid Valve SL"
+          },
+          {
+            "title": "Hệ thống Van Thủy Lực (Hydraulic Valves)",
+            "text": "Các van cơ khí này là nơi thực thi mệnh lệnh từ Solenoid. Chúng được bố trí chia đều ở **Upper Valve Body** (Thân van trên) và **Lower Valve Body** (Thân van dưới)."
+          },
+          {
+            "title": "A. Upper Valve Body (Thân Van Trên)",
+            "text": "Đây là nơi chứa các van điều tiết áp suất thứ cấp và các van định thời quan trọng.",
+            "image": "assets/images/s2/s2-6.png",
+            "caption": "Hình 4.6 — Thân van trên"
+          },
+          {
+            "title": "Secondary Regulator Valve (B)",
+            "text": "Điều chỉnh áp suất dầu cấp cho biến mô và hệ thống bôi trơn. Áp suất dư từ van này sẽ hồi về cửa hút của bơm dầu.",
+            "image": "assets/images/s2/s2-7.png",
+            "caption": "Hình 4.7 — Secondary Regulator Valve"
+          },
+          {
+            "title": "2-3 Shift Valve (E)",
+            "text": "Nhận lệnh từ Solenoid S1 để chuyển đổi đường dầu giữa số 2 và số 3 (cấp dầu cho ly hợp C2).",
+            "image": "assets/images/s2/s2-8.png",
+            "caption": "Hình 4.8 — 2-3 Shift Valve"
+          },
+          {
+            "title": "3-4 Shift Timing Valve (C)",
+            "text": "Một thành phần cực kỳ quan trọng trong U340E. Nó điều tiết tốc độ xả dầu của ly hợp C1 và tốc độ cấp dầu của phanh B1 khi lên số 4, giúp quá trình chuyển số êm dịu.",
+            "image": "assets/images/s2/s2-9.png",
+            "caption": "Hình 4.9 — 3-4 Shift Timing Valve"
+          },
+          {
+            "title": "4-3 Shift Timing No.1 Valve (H)",
+            "text": "Hỗ trợ quá trình về số từ 4 xuống 3 (xả B1, đóng lại C1).",
+            "image": "assets/images/s2/s2-10.png",
+            "caption": "Hình 4.10 — 4-3 Shift Timing No.1 Valve"
+          },
+          {
+            "title": "Rock-up Relay Valve (A)",
+            "text": "Van rơ-le cho phép dòng dầu đi vào piston khóa biến mô khi Solenoid SL mở.",
+            "image": "assets/images/s2/s2-11.png",
+            "caption": "Hình 4.11 — Rock-up Relay Valve"
+          },
+          {
+            "title": "Solenoid Modulator Valve (J)",
+            "text": "Ổn định áp suất đầu vào cấp cho các Solenoid. Điều này đảm bảo dù áp suất bơm thay đổi theo tua máy, áp suất điều khiển solenoid vẫn ổn định để tránh sai lệch tín hiệu.",
+            "image": "assets/images/s2/s2-12.png",
+            "caption": "Hình 4.12 — Solenoid Modulator Valve"
+          },
+          {
+            "title": "Reverse Control Valve (G)",
+            "text": "Điều khiển áp suất dầu khi vào số lùi (R), đảm bảo ly hợp C3 và phanh B3 đóng êm dịu.",
+            "image": "assets/images/s2/s2-13.png",
+            "caption": "Hình 4.13 — Reverse Control Valve"
+          },
+          {
+            "title": "B. Lower Valve Body (Thân Van Dưới)",
+            "text": "Nơi chứa các van chuyển số chính và van điều áp sơ cấp.",
+            "image": "assets/images/s2/s2-14.png",
+            "caption": "Hình 4.14 — Thân van dưới"
+          },
+          {
+            "title": "Primary Regulator Valve (A)",
+            "text": "Van điều áp chính. Nó nhận áp suất trực tiếp từ bơm dầu và điều chỉnh áp suất đường dầu (Line Pressure) dựa trên tín hiệu áp suất bướm ga (Throttle Pressure) từ Solenoid SLT.",
+            "image": "assets/images/s2/s2-15.png",
+            "caption": "Hình 4.15 — Primary Regulator Valve"
+          },
+          {
+            "title": "Manual Valve",
+            "text": "Van tay số, kết nối trực tiếp với cần số của tài xế (P, R, N, D, 2, L). Nó phân phối dòng dầu chính đến các nhánh cơ bản trước khi qua các van chuyển số.",
+            "image": "assets/images/s2/s2-16.png",
+            "caption": "Hình 4.16 — Manual Valve thực tế"
+          },
+          {
+            "title": "1-2 Shift Valve (D)",
+            "text": "Nhận lệnh từ Solenoid S2. Quyết định việc chuyển từ số 1 sang số 2 (cấp dầu cho phanh B2).",
+            "image": "assets/images/s2/s2-17.png",
+            "caption": "Hình 4.17 — 1-2 Shift Valve"
+          },
+          {
+            "title": "3-4 Shift Valve (C)",
+            "text": "Nhận lệnh từ Solenoid S2 và ST. Quyết định việc ngắt dầu C1 và cấp dầu B1 để vào số OD.",
+            "image": "assets/images/s2/s2-18.png",
+            "caption": "Hình 4.18 — 3-4 Shift Valve"
+          },
+          {
+            "title": "Accumulator Control Valve (E)",
+            "text": "Điều chỉnh áp suất đối áp (back pressure) cho các bộ tích năng (Accumulator), giúp giảm chấn khi các đĩa ma sát ép vào nhau.",
+            "image": "assets/images/s2/s2-19.png",
+            "caption": "Hình 4.19 — Accumulator Control Valve"
+          },
+          {
+            "title": "Lock-up Control Valve (B)",
+            "text": "Phối hợp với Lock-up Relay Valve để điều chỉnh độ trượt của ly hợp khóa biến mô.",
+            "image": "assets/images/s2/s2-20.png",
+            "caption": "Hình 4.20 — Lock-up Control Valve"
+          },
+          {
+            "title": "Cấu tạo và sơ đồ chức năng",
+            "text": "Hệ thống thủy lực gồm các cụm cơ bản:\n\n• Nguồn cung cấp năng lượng\n• Bộ chuyển đổi và truyền tín hiệu chuyển số\n• Bộ van thủy lực chuyển số\n• Bộ tích năng giảm chấn\n• Các đường dầu\n\nBộ điều khiển thủy lực có chức năng tạo ra áp suất thủy lực, điều chỉnh áp suất thủy lực bằng các van điều áp sơ cấp, van bướm ga thích hợp với công suất phát ra của động cơ. Hệ thống điều khiển đóng mở các ly hợp và phanh để thực hiện chuyển số.",
+            "image": "assets/images/s2/s2-21.png",
+            "caption": "Hình 4.21 — Sơ đồ chức năng điều khiển của hệ thống thủy lực"
+          },
+          {
+            "title": "Đường đi của dầu — Số 1 (Vị trí D)",
+            "text": "**Solenoid:** S1 (ON), S2 (ON)\n\n**Chấp hành:** Ly hợp C1 đóng, Khớp một chiều F2 khóa\n\n**Đường đi của dầu:**\n\nCácte → Lọc dầu → Bơm dầu → Van điều áp chính → Manual valve → Van chuyển 1-2 (ở vị trí số 1) → Ly hợp C1\n\n*Đồng thời:* Khi dầu từ Manual valve đi tới ly hợp C1, dòng dầu được chia nhánh: một nhánh vào ly hợp C1, một nhánh rẽ vào bộ tích áp C1 để giảm sốc khi C1 ăn khớp. Khớp một chiều F2 khóa để chống quay ngược, giúp hộp số hoạt động êm dịu.\n\n**Chú thích đường dầu trên sơ đồ:**\n\n[arrow:green] Áp suất dầu từ bơm và được điều chỉnh từ van điều áp tới manual valve\n\n[arrow:blue] Áp suất dầu dẫn trực tiếp từ Manual valve tới phanh, ly hợp; áp suất dầu dẫn từ van chuyển tới phanh, ly hợp",
+            "image": "assets/images/s2/s2-23.png",
+            "caption": "Hình 4.23 — Sơ đồ đường dầu ở số 1 (vị trí D)",
+            "imageSize": "large"
+          },
+          {
+            "title": "Số 2 (Vị trí D)",
+            "text": "**Solenoid:** S1 (ON), S2 (OFF)\n\n**Chấp hành:** Ly hợp C1 đóng, Phanh B2 đóng, Khớp một chiều F1 khóa\n\n**Đường đi của dầu:**\n\n• **Duy trì áp suất C1:** Van điều áp chính → Manual valve → Ly hợp C1\n• **Cấp áp suất cho B2:** Van điều áp chính → Manual valve → Van chuyển 1-2 (ở vị trí số 2) → Phanh B2 (kèm tích áp B2)\n\n*Đồng thời:* F1 hoạt động cùng lúc với B2 để chống quay ngược, giúp quá trình chuyển 1→2 êm dịu. C1 vẫn duy trì áp suất song song.\n\n**Chú thích đường dầu trên sơ đồ:**\n\n[arrow:green] Áp suất dầu từ bơm và được điều chỉnh từ van điều áp tới manual valve\n\n[arrow:blue] Áp suất dầu dẫn trực tiếp từ Manual valve tới phanh, ly hợp; áp suất dầu dẫn từ van chuyển, van số lùi tới phanh, ly hợp\n\n[arrow:yellow] Áp suất dầu điều khiển từ Manual valve tới van solenoid S1, S2\n\n[arrow:orange] Áp suất dầu điều khiển từ các van solenoid S1, S2 tới các van chuyển",
+            "image": "assets/images/s2/s2-24.png",
+            "caption": "Hình 4.24 — Sơ đồ đường dầu ở số 2 (vị trí D)",
+            "imageSize": "large"
+          },
+          {
+            "title": "Số 3 (Vị trí D)",
+            "text": "**Solenoid:** S1 (OFF), S2 (OFF)\n\n**Chấp hành:** Ly hợp C1 đóng, Ly hợp C2 đóng (Phanh B2 vẫn giữ nhưng không chịu lực chính)\n\n**Đường đi của dầu:**\n\n• **Duy trì áp suất C1:** Van điều áp chính → Manual valve → Ly hợp C1\n• **Duy trì áp suất B2:** Van điều áp chính → Manual valve → Van chuyển 1-2 ở số 2 → Phanh B2\n• **Cấp áp suất cho C2:** Van điều áp chính → Manual valve → Van chuyển 2-3 → Ly hợp C2\n\n**Chú thích đường dầu trên sơ đồ:**\n\n[arrow:green] Áp suất dầu từ bơm và được điều chỉnh từ van điều áp tới manual valve\n\n[arrow:blue] Áp suất dầu dẫn trực tiếp từ Manual valve tới phanh, ly hợp; áp suất dầu dẫn từ van chuyển, van số lùi tới phanh, ly hợp\n\n[arrow:yellow] Áp suất dầu điều khiển từ Manual valve tới van solenoid S1, S2\n\n[arrow:orange] Áp suất dầu điều khiển từ các van solenoid S1, S2 tới các van chuyển",
+            "image": "assets/images/s2/s2-25.png",
+            "caption": "Hình 4.25 — Sơ đồ đường dầu ở số 3 (vị trí D)",
+            "imageSize": "large"
+          },
+          {
+            "title": "Số 4 (Overdrive)",
+            "text": "**Solenoid:** S1 (OFF), S2 (ON)\n\n**Chấp hành:** Ly hợp C2 đóng, Phanh B1 đóng (Ly hợp C1 ngắt), Phanh B2 đóng\n\n**Đường đi của dầu:**\n\n• **Duy trì áp suất C2:** Van điều áp chính → Manual valve → Van chuyển 2-3 → Ly hợp C2\n• **Ngắt C1 và đóng B1:** Van điều áp chính → Manual valve → Van chuyển 3-4 → Cắt đường dầu C1 (xả về cácte) đồng thời → dầu tới B1\n• **Duy trì áp suất B2:** Van điều áp chính → Manual valve → Van chuyển 1-2 ở số 2 → Phanh B2\n\n**Chú thích đường dầu trên sơ đồ:**\n\n[arrow:green] Áp suất dầu từ bơm và được điều chỉnh từ van điều áp tới manual valve\n\n[arrow:blue] Áp suất dầu dẫn trực tiếp từ Manual valve tới phanh, ly hợp; áp suất dầu dẫn từ van chuyển, van số lùi tới phanh, ly hợp\n\n[arrow:yellow] Áp suất dầu điều khiển từ Manual valve tới van solenoid S1, S2\n\n[arrow:orange] Áp suất dầu điều khiển từ các van solenoid S1, S2 tới các van chuyển",
+            "image": "assets/images/s2/s2-26.png",
+            "caption": "Hình 4.26 — Sơ đồ đường dầu ở số 4 (Overdrive)",
+            "imageSize": "large"
+          },
+          {
+            "title": "Số Lùi (R)",
+            "text": "**Solenoid:** S1 (ON), S2 (ON)\n\n**Chấp hành:** Ly hợp C3 đóng, Phanh B3 đóng\n\n**Đường đi của dầu:**\n\nKhi cần số ở vị trí R, dầu được bơm và lọc → ổn định áp lực ở van điều áp chính → qua Manual valve (ở vị trí lùi) → điều chỉnh áp ở van điều khiển số lùi → đưa tới ly hợp C3, phanh B3 và **tích áp C3, B3**.\n\n• **Cấp áp suất cho C3:** Van điều áp chính → Manual valve → Ly hợp C3 (kèm tích áp C3)\n• **Cấp áp suất cho B3:** Van điều áp chính → Manual valve → Van điều khiển số lùi → Phanh B3 (kèm tích áp B3)\n\n**Chú thích đường dầu trên sơ đồ:**\n\n[arrow:green] Áp suất dầu từ bơm và được điều chỉnh từ van điều áp tới manual valve\n\n[arrow:blue] Áp suất dầu dẫn trực tiếp từ Manual valve tới phanh, ly hợp; áp suất dầu dẫn từ van chuyển, van số lùi tới phanh, ly hợp\n\n[arrow:purple] Áp suất dầu điều khiển từ manual valve tới van số lùi",
+            "image": "assets/images/s2/s2-27.png",
+            "caption": "Hình 4.27 — Sơ đồ đường dầu ở số lùi (R)",
+            "imageSize": "large"
+          },
+          {
+            "title": "Điều áp — tạo nền áp suất ổn định",
+            "text": "Sau khi bơm tạo áp, áp suất không được để tăng tự do theo tốc độ động cơ vì sẽ gây tổn thất công suất, tăng nhiệt và làm chuyển số thô. Do đó U340E dùng các van điều áp để giữ áp suất trong dải làm việc, đồng thời cho phép thay đổi áp suất theo tải (mô-men động cơ) và trạng thái chuyển số.\n\nĐiều khiển áp suất đường chính của U340E được thực hiện thông qua **van điện từ SLT**: SLT điều khiển line pressure theo thông tin mô-men từ ECU động cơ và điều kiện vận hành của hộp số.\n\nĐiểm quan trọng là SLT không chỉ kéo lên/kéo xuống line pressure, mà còn tham gia điều khiển áp suất thứ cấp và áp suất ngược của bộ tích áp, nhằm định hình tốc độ tăng áp khi đóng ly hợp/phanh để vừa chống trượt vừa êm."
+          },
+          {
+            "title": "Van chọn tay số (Manual Valve) — phân phối dầu theo vị trí cần số",
+            "text": "Manual valve là cửa phân luồng do người lái điều khiển gián tiếp thông qua cơ cấu cần số/cáp điều khiển. Khi người lái chọn **P-R-N-D-2-L**, các cửa của manual valve sẽ nối/che các đường dầu khác nhau, từ đó tạo các điều kiện cần để hộp số có thể vào số lùi, số tiến hay giữ số thấp.\n\nManual valve được mô tả như **bộ van then chốt** quyết định mạch dầu nào được mở quyền nhận line pressure, còn việc hộp số thực sự đang ở số 1/2/3/4 trong dải D lại phụ thuộc tiếp vào các van chuyển số và tín hiệu solenoid."
+          },
+          {
+            "title": "Cụm van chuyển số — biến tín hiệu điều khiển thành trạng thái mạch dầu",
+            "text": "U340E có các van chuyển số **1-2, 2-3 và 3-4**.\n\nNguyên lý điển hình của van chuyển số 1-2:\n\n• Khi solenoid chưa tác động → áp suất dầu tác dụng lên một phía của con trượt thắng lực lò xo → các đường dầu đến cơ cấu chấp hành bị ngắt → hộp số giữ số 1\n• Khi ECU ra lệnh solenoid làm việc → áp suất điều khiển ở phía đó bị triệt tiêu → lò xo đẩy con trượt dịch chuyển → mở đường dầu cấp đến phanh B2 để chuyển sang số 2\n\nCơ chế này cho thấy: **chuyển số thực chất là quá trình chuyển mạch áp suất trong thân van**, còn ly hợp/phanh chỉ làm theo bằng cách nhận áp suất và biến thành lực ép."
+          },
+          {
+            "title": "Bộ tích áp (Accumulator) — giảm chấn thủy lực",
+            "text": "Khi dầu áp suất cao cấp vào ly hợp/phanh, nếu áp suất tăng quá nhanh thì mô-men truyền sẽ tăng đột ngột gây giật. Vì vậy, trên đường dầu thường bố trí các bộ tích áp nhằm tạo một độ đàn hồi thủy lực, làm chậm tốc độ tăng áp trong thời điểm đầu ăn khớp.\n\nTrong mô tả đường dầu số 1 của U340E, ngay khi dầu từ manual valve đi tới ly hợp C1, dòng dầu được chia nhánh: một nhánh vào ly hợp, một nhánh đi vào **bộ tích áp C1 để giảm sốc**."
+          },
+          {
+            "title": "Diễn giải đường dầu — Số 1",
+            "text": "Ở số 1, dầu từ cácte qua lọc, bơm dầu tạo áp, đi qua van điều áp chính, qua manual valve và cấp đến ly hợp C1. Đồng thời, nhánh tích áp C1 tham gia để làm êm quá trình C1 ăn khớp.\n\nKhi xe tăng tốc, ECU vẫn giữ S1 ON, S2 ON để duy trì cấu hình mạch dầu phù hợp số 1, trong khi áp suất line pressure có thể được điều chỉnh theo tải bằng SLT để tránh trượt ly hợp."
+          },
+          {
+            "title": "Diễn giải đường dầu — Số 2",
+            "text": "Ở số 2, đường dầu duy trì C1 tương tự số 1, nhưng nhờ van chuyển 1-2 đổi vị trí, áp suất được cấp thêm tới phanh B2.\n\nVì B2 là phần tử giữ trong bộ truyền hành tinh, độ êm của chuyển 1→2 phụ thuộc mạnh vào tốc độ tăng áp ở mạch B2; đây là nơi accumulator và điều khiển áp suất tối ưu phát huy tác dụng."
+          },
+          {
+            "title": "Diễn giải đường dầu — Số 3",
+            "text": "Ở số 3, C2 được cấp áp suất thông qua van chuyển 2-3, giúp C2 đóng và hình thành truyền thẳng theo quan hệ của cụm hành tinh; B2 vẫn có thể duy trì áp suất nhưng không còn chịu lực chính."
+          },
+          {
+            "title": "Diễn giải đường dầu — Số 4",
+            "text": "Ở số 4, về bản chất là **overdrive**: C2 tiếp tục duy trì, trong khi C1 bị cắt đường dầu (xả về cácte) và phanh B1 được cấp áp suất thông qua van chuyển 3-4.\n\nViệc cắt C1 và đóng B1 nếu không điều tiết tốt sẽ dễ gây giật; vì vậy chiến lược điều khiển ly hợp-ly hợp và cơ chế triệt tiêu áp suất ly tâm ở C1 được đưa vào để tăng đáp ứng và làm mượt quá trình 3→4."
+          },
+          {
+            "title": "Diễn giải đường dầu — Số lùi",
+            "text": "Ở số lùi, manual valve mở đường dầu cho mạch lùi: ly hợp C3 nhận áp suất trực tiếp, đồng thời van điều khiển số lùi cấp áp suất đến phanh B3, tạo điều kiện đảo chiều quay đầu ra."
+          },
+          {
+            "title": "Mạch khóa biến mô (Lock-up) trong thủy lực",
+            "text": "Trong U340E, khóa biến mô là cơ cấu quan trọng để giảm trượt của biến mô, tăng hiệu suất truyền lực và giảm nhiệt dầu. Về điều khiển, ECU gửi dòng điều khiển đến **solenoid SL** để đóng/mở lock-up clutch theo tín hiệu cảm biến và điều kiện vận hành.\n\nTrên thân van, mạch lock-up thường đi qua các van chức năng như **van rơ le khóa biến mô, van tín hiệu khóa biến mô**… trước khi tạo áp suất tác dụng lên piston lock-up trong biến mô.\n\nTrong khai thác kỹ thuật, lock-up không chỉ là bật/tắt mà còn gắn với độ êm (NVH) và nhiệt: nếu điều khiển lock-up sai thời điểm, xe có thể rung nhẹ khi tải thấp hoặc tăng nhiệt ATF khi tải cao do trượt kéo dài."
+          }
+        ],
+        "table": {
+          "title": "Bảng 2.1 — Trạng thái solenoid S1-S2 và phần tử ma sát theo tay số (U340E)",
+          "headers": [
+            "Tay số",
+            "S1",
+            "S2",
+            "Cơ cấu chấp hành chính (điển hình)"
+          ],
+          "rows": [
+            ["Số 1 (D)", "ON", "ON", "C1 đóng; khớp một chiều F2 khóa"],
+            ["Số 2 (D)", "ON", "OFF", "C1 đóng; B2 đóng"],
+            ["Số 3 (D)", "OFF", "OFF", "C1 đóng; C2 đóng (B2 duy trì)"],
+            [
+              "Số 4 (OD)",
+              "OFF",
+              "ON",
+              "C2 đóng; B1 đóng; C1 ngắt (B2 duy trì)"
+            ],
+            ["Số lùi (R)", "ON", "ON", "C3 đóng; B3 đóng"]
+          ]
+        },
+        "relatedDTC": ["P0751", "P0756", "P2714", "P2716", "P2757", "P2759"]
+      }
+    },
+    {
+      "id": "4.2",
+      "title": "Hệ thống điều khiển điện tử",
+      "content": {
+        "intro": "Nếu hệ thống thủy lực là nơi tạo lực thì hệ thống điều khiển điện tử là nơi ra quyết định. ECU động cơ vừa xử lý thông tin động cơ vừa điều khiển hộp số thông qua các tín hiệu cảm biến và cơ cấu chấp hành (solenoid), đồng thời thực hiện chẩn đoán và lưu mã lỗi.",
+        "explain": [
+          {
+            "title": "Sơ đồ khối điều khiển điện tử",
+            "text": "Cấu hình điều khiển U340E thể hiện rõ xu hướng tích hợp: **ECU động cơ vừa xử lý thông tin động cơ vừa điều khiển hộp số** thông qua các tín hiệu cảm biến và cơ cấu chấp hành (solenoid), đồng thời thực hiện chẩn đoán và lưu mã lỗi.",
+            "image": "assets/images/s2/s2-22.png",
+            "caption": "Hình 4.22 — Sơ đồ khối điều khiển điện tử hộp số U340E"
+          },
+          {
+            "title": "Cảm biến và tín hiệu đầu vào",
+            "text": "Sơ đồ cấu hình chỉ ra các tín hiệu đầu vào điển hình:\n\n• Lưu lượng khí nạp\n• Cảm biến vị trí trục khuỷu\n• Vị trí bướm ga, vị trí bàn đạp ga\n• Nhiệt độ nước làm mát\n• Công tắc khởi động trung gian (neutral start)\n• Cảm biến tốc độ hộp số (NT)\n• Cảm biến nhiệt độ ATF\n• Công tắc đèn phanh\n• Tín hiệu tốc độ xe từ cụm đồng hồ/ECU phanh\n\n**Ý nghĩa kỹ thuật:** chuyển số không thể chỉ dựa vào tốc độ xe. ECU cần đồng thời biết:\n\n• **Tải động cơ** (qua bướm ga/bàn đạp ga và mô-men)\n• **Trạng thái nhiệt** (nước làm mát, ATF)\n• **Người lái đang phanh hay không** (stop light switch)\n\n→ để quyết định có khóa biến mô hay cắt khóa biến mô, có giữ số thấp để tăng hãm động cơ hay không."
+          },
+          {
+            "title": "Cơ cấu chấp hành — cụm solenoid",
+            "text": "Một điểm rất quan trọng của U340E: thân van gồm 2 phần (upper/lower valve body) và có **5 van điện từ bố trí ở thân van dưới** để thuận tiện bảo dưỡng.\n\nChức năng của từng solenoid:\n\n• **S1** — điều khiển van chuyển 2-3, qua đó điều khiển ly hợp C2 để thực hiện chuyển số.\n• **S2** — điều khiển van chuyển 1-2 và 3-4, phối hợp điều khiển 2 ly hợp (C1, C2) và 2 phanh (B1, B2).\n• **ST** — phục vụ điều khiển áp suất dạng ly hợp-ly hợp; tác động chuyển mạch các van 3-4 và 4-3 để định hình quá trình chuyển số ở vùng OD.\n• **SL** — điều khiển áp suất ăn khớp, trực tiếp phục vụ điều khiển khóa biến mô.\n• **SLT** — điều khiển áp suất đường chính (line pressure), áp suất thứ cấp và áp suất ngược của bộ tích áp.\n\n**Tóm tắt vai trò:** S1 và S2 đóng vai trò **chọn số** bằng cách đổi trạng thái các van chuyển số; còn SLT/ST/SL đóng vai trò **điều tiết chất lượng** (áp suất - tốc độ tăng áp - lock-up) để chuyển số vừa chắc vừa êm.\n\nVan điện từ cũng thường được chia thành 2 nhóm: **van điện từ chuyển số dạng 2 vị trí** và **van điện từ tuyến tính** để điều khiển áp suất dầu theo dòng điều khiển từ ECU."
+          },
+          {
+            "title": "Điều khiển chuyển số và tối ưu áp suất",
+            "text": "U340E nhấn mạnh điều khiển áp suất tối ưu theo tải và điều kiện chạy. **SLT điều khiển vi sai áp suất ly hợp** theo công suất động cơ và điều kiện vận hành; đồng thời điều khiển line pressure theo thông tin ECU động cơ và trạng thái hộp số.\n\nĐộ trễ chuyển số được giảm đáng kể nhờ **cơ cấu triệt tiêu áp suất ly tâm trong ly hợp C1**: khi có buồng triệt tiêu (chamber B) đối xứng với buồng áp suất piston (chamber A), áp suất do lực ly tâm tác dụng lên chất lỏng được triệt tiêu, không cần xả bằng bi van như kiểu cũ; nhờ đó quá trình nạp đầy dầu nhanh hơn và chuyển số đạt đáp ứng cao, êm hơn.\n\n**Về cảm giác lái:** cơ chế này đặc biệt có lợi ở vùng 3→4 vì C1 liên quan trực tiếp đến chuyển OD: nếu C1 nhả chậm hoặc nạp/thoát dầu kém ổn định, xe dễ bị giật hoặc hụt lực."
+          },
+          {
+            "title": "Điều khiển theo điều kiện đường",
+            "text": "**Lên/xuống dốc:** ECU có chiến lược hạn chế lên số 4 hoặc tạo hãm động cơ phù hợp bằng cách nhận biết xe đang lên dốc/xuống dốc; việc đánh giá dựa trên gia tốc thực tế suy ra từ tín hiệu tốc độ so với gia tốc tham chiếu khi đi đường bằng.\n\n**Chống chồm khi vào D:** Khi chuyển cần số từ N sang D, ECU có chiến lược chuyển tạm lên số 3 rồi về số 1 để giảm hiện tượng xe chồm/squat khi vào số.\n\nNhững chiến lược này cho thấy điều khiển hộp số không chỉ là chọn tỷ số truyền, mà còn là **điều khiển động lực học thân xe và cảm giác người lái**."
+          },
+          {
+            "title": "Chẩn đoán và chế độ dự phòng (Fail-safe)",
+            "text": "Khi phát hiện bất thường, ECU thực hiện chẩn đoán, lưu vùng hư hỏng và bật/tắt đèn cảnh báo động cơ; mã lỗi có thể đọc qua **cổng DLC3** bằng thiết bị chẩn đoán phù hợp.\n\nỞ chế độ dự phòng:\n\n• Một số lỗi cảm biến hoặc solenoid sẽ dẫn đến **cấm lên số 4** nhằm bảo vệ và duy trì khả năng chạy được của xe.\n• Nếu **S1 hoặc S2 lỗi**, ECU có thể cắt dòng đến solenoid lỗi và điều khiển bằng solenoid còn lại theo bảng logic dự phòng."
+          },
+          {
+            "title": "Thông số kiểm tra điện trở solenoid",
+            "text": "Trong quy trình kiểm tra, điện trở solenoid thường được đo ở **20°C**.\n\nĐiện trở tiêu chuẩn:\n\n• **Solenoid S2**: 11–15 Ω ở 20°C\n• Tài liệu hướng dẫn kiểm tra tương tự cũng thể hiện dải điện trở tiêu chuẩn **11–15 Ω ở 20°C** cho van điện từ chuyển số.\n\n**Khi đo bất thường:** Nếu điện trở lệch xa dải tiêu chuẩn hoặc solenoid không phát ra tiếng tác động khi cấp điện kiểm tra, cần cân nhắc khả năng kẹt cơ khí, cháy cuộn hoặc nhiễm bẩn làm giảm độ linh hoạt của con trượt."
+          }
+        ],
+        "table": {
+          "title": "Bảng 2.2 — Nhóm tín hiệu đầu vào chính phục vụ điều khiển U340E",
+          "headers": ["Nhóm tín hiệu", "Ví dụ", "Vai trò điều khiển"],
+          "rows": [
+            [
+              "Tốc độ - trạng thái chuyển động",
+              "Speed sensor NT, tín hiệu tốc độ xe",
+              "Quyết định điểm chuyển số, phát hiện trượt/không tương thích tốc độ"
+            ],
+            [
+              "Tải động cơ",
+              "Throttle position, accelerator pedal position, thông tin mô-men",
+              "Hiệu chỉnh áp suất line pressure và áp suất ly hợp/phanh để chống trượt"
+            ],
+            [
+              "Nhiệt độ",
+              "ATF temperature, water temperature",
+              "Giới hạn chiến lược (ví dụ hạn chế lên số cao khi điều kiện bất lợi), bảo vệ"
+            ],
+            [
+              "Thao tác người lái",
+              "Stop light switch, vị trí cần số P/R/N/D/2/L",
+              "Quyết định giảm số khi phanh, cho phép vào số, logic khóa chuyển số"
+            ],
+            [
+              "Chẩn đoán - giao tiếp",
+              "DLC3, đèn Check Engine",
+              "Lưu DTC, hiển thị cảnh báo và hỗ trợ đọc lỗi"
+            ]
+          ]
+        },
+        "relatedDTC": ["P0710", "P0711", "P0717"]
+      }
+    }
+  ]
+}
